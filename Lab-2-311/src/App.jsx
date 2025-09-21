@@ -1,35 +1,68 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import Profile from "./Profile";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const users = [
+    {
+      id: 1,
+      name: "Leanne Graham",
+      role: "Frontend Developer",
+      avatarUrl: "https://api.dicebear.com/9.x/personas/svg?seed=Leanne"
+    },
+    {
+      id: 2,
+      name: "Ervin Howell",
+      role: "Backend Developer",
+      avatarUrl: "https://api.dicebear.com/9.x/personas/svg?seed=Ervin"
+    },
+    {
+      id: 3,
+      name: "Clementine Bauch",
+      role: "UI/UX Designer",
+      avatarUrl: "https://api.dicebear.com/9.x/personas/svg?seed=Clementine"
+    },
+    {
+      id: 4,
+      name: "Patricia Lebsack",
+      role: "Project Manager",
+      avatarUrl: "https://api.dicebear.com/9.x/personas/svg?seed=Patricia"
+    },
+    {
+      id: 5,
+      name: "Chelsey Dietrich",
+      role: "QA Engineer",
+      avatarUrl: "https://api.dicebear.com/9.x/personas/svg?seed=Chelsey"
+    },
+    {
+      id: 6,
+      name: "Mrs. Dennis Schulist",
+      role: "DevOps Engineer",
+      avatarUrl: "https://api.dicebear.com/9.x/personas/svg?seed=Dennis"
+    },
+    {
+      id: 7,
+      name: "Kurtis Weissnat",
+      role: "Fullstack Developer",
+      avatarUrl: "https://api.dicebear.com/9.x/personas/svg?seed=Kurtis"
+    }
+  ];
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="app">
+      <h1>User Profiles</h1>
+      <div className="profile-list">
+        {users.map((user) => (
+          <Profile
+            key={user.id}
+            name={user.name}
+            role={user.role}
+            avatarUrl={user.avatarUrl}
+          />
+        ))}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
