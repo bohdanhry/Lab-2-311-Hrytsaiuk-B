@@ -14,3 +14,16 @@ The React Compiler is currently not compatible with SWC. See [this issue](https:
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+# Component Tree + Data Flow
+
+App
+└── TodoList (state: todos - array of {id, text})
+    ├── AddTodoForm
+    │   └─ props: onAddTodo(newText)
+    │   └─ actions: on submit -> onAddTodo
+    └── TodoItem (state: isCompleted - boolean)
+        └─ props: task {id, text}, onDelete(id)
+        └─ actions:
+            - checkbox toggle -> updates local isCompleted
+            - delete button -> calls onDelete(id) (child → parent)
